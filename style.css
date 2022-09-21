@@ -1,0 +1,13 @@
+h2 {
+  color: skyblue;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  font-style: italic;
+  color: grey;
+}
+h4 {
+  color: skyblue;
+  font-style: oblique;
+}

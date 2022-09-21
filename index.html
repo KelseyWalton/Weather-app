@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="container">
+      <div class="border">
+        <div class="search" id="search-form">
+          <form>
+            <div class="row">
+              <div class="col-6">
+                <input                
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your city"
+                  id="city-input"
+                  autofocus
+                />
+              </div>
+              <div class="col-6">
+                <input type="submit" value="Search 🔍" class="search-btn" />
+              </div>
+            </div>
+          </form>
+          <div class="row current">
+            <div class="col-6">
+              <h1 class="current-city" id="city">Nashville TN, US</h1>
+              <div class="date" id="date">
+                <span id="day">Sunday</span>
+                <br />
+                <span id="month">September 4, 2022
+                <br />
+                <span id="time">10:00 am</span>
+              </div>
+              <div class="temperature" id="temperature">75°</div>
+              <div class="units">
+                <a href="#" id="fahrenheit-link">°F</a> | 
+                <a href="#" id="celsius-link">°C</a>
+              </div> 
+            </div>
+            <div class="col-6">
+              <div class="column weather">
+                <div class="emoji">🌤️</div>
+                <h3>Mostly Sunny</h3>
+                <p>
+                  <strong>H: 81°F | L: 75°F</strong>
+                  <br />
+                  Precipitation: 12%
+                  <br />
+                  Wind: 5mph
+                  <br />
+                  Humidity: 61%
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row row-cols-sm-5 forecast">
+            <div id="allCards">
+              <div class="col-sm-11 forecast-day">
+                <div class="card" style="width: 8rem; margin: 0.5rem;">
+                  <div class="card-body">
+                  Monday
+                  <div class="forecast-emoji">⛈️</div>
+                  86°F
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-11 forecast-day">
+                <div class="card" style="width: 8rem; margin: 0.5rem;">
+              <div class="card-body">
+                Tuesday
+                <div class="forecast-emoji">🌧</div>
+                81°F
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-11 forecast-day">              
+                <div class="card" style="width: 8rem; margin: 0.5rem;">
+              <div class="card-body">
+                Wednesday
+                <div class="forecast-emoji">🌞</div>
+                77°F
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-11 forecast-day">              
+                <div class="card" style="width: 8rem; margin: 0.5rem;">
+              <div class="card-body">
+                Thursday
+                <div class="forecast-emoji">🌞</div>
+                76°F
+              </div>
+            </div>
+            </div>
+            <div class="col-sm-11 forecast-day">              
+                <div class="card" style="width: 8rem; margin: 0.5rem;">
+              <div class="card-body">
+                Friday
+                <div class="forecast-emoji">⛅</div>
+                72°F
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <script src="src/index.js"></script>
+    </body>
+</html>
