@@ -56,7 +56,8 @@ function displayTemperature(response) {
   iconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
                            );
 }
-  
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
   let apiKey = "897d9f57f1d7721ebf11f10b089e7315";
   let city = "Nashville";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
