@@ -53,13 +53,14 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt *1000);
-  iconElement.innerHTML ='
+  iconElement.innerHTML =`http://openweathermap.org/img/wn/04d@2x.png`
+}
   
   let apiKey = "897d9f57f1d7721ebf11f10b089e7315";
   let city = "Nashville";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    axios.get(apiUrl).then(showTemperature);
+    axios.get(apiUrl).then(displayTemperature);
 
 }
 
