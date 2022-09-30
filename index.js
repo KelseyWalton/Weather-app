@@ -38,17 +38,33 @@ dateElement.innerHTML = formatDate(currentTime);
 let searchForm = document.querySelector("form");
 searchForm.addEventListener("submit", search);
 
-function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let showTemperature = document.querySelector("#temperature");
-  showTemperature.innerHTML = temperature;
-  let cityname = response.data.name;
-  let showCityName = document.querySelector("#city");
-  showCityName.innerHTML = cityname;
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+  
+  temperatureElement.innerHTML = math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionELement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.dt *1000);
+  iconElement.innerHTML ='
+  
+  let apiKey = "897d9f57f1d7721ebf11f10b089e7315";
+  let city = "Nashville";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(showTemperature);
+
 }
 
 function showCity(city) {
-  let apiKey = "e450bc345a80a08ada69fd5c714d871d";
+  let apiKey = "897d9f57f1d7721ebf11f10b089e7315";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
