@@ -47,7 +47,9 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
   
-  temperatureElement.innerHTML = math.round(response.data.main.temp);
+  celciusTemperature = response.data.main.temp;
+  
+  temperatureElement.innerHTML = math.round(celciusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionELement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -82,3 +84,34 @@ function showLocation(position) {
 function currentLocation() {
   navigator.geolocation.getCurrentPosition(showLocation);
 }
+
+function displayFahrenheitTemperature(event) {
+event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celciusTemperature * 9) /5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+
+let form = document.querySelector("#search-form");
+form.addEventlistener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+function displayCelciusTemperature(event) {
+event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventlistener("submit", handleSubmit);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
+
+
+search("Nashville");
