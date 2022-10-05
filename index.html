@@ -10,41 +10,56 @@
 <body>
     <div class="container">
       <div class="border">
-        <div class="search" id="search-form">
-          <form>
+        <div class="weather-app">
+          <form id="search-form" class="mb-3">
             <div class="row">
               <div class="col-6">
                 <input                
-                  type="text"
+                  type="search"
                   class="form-control"
                   placeholder="Enter your city"
                   id="city-input"
-                  autofocus
+                  autocomplete="off"
                 />
               </div>
               <div class="col-6">
-                  <img src="" alt="clear" id="icon" class="float-left" />
-                <input type="submit" value="Search 🔍" class="search-btn" />
+                 <input
+                type="submit" 
+                value="Search 🔍" 
+                class="btn btn-primary w-150" 
+                />
               </div>
             </div>
           </form>
-          <div class="row current">
-            <div class="col-6">
-              <h1 class="current-city" id="city">Nashville TN, US</h1>
-              <div class="date" id="date">
-                <span id="day">Sunday</span>
-                <br />
-                <span id="month">October 3, 2022
-                <br />
-                <span id="time">2:00 pm</span>
-              </div>
-              <div class="temperature" id="temperature">75°</div>
-              <div class="units">
-                <a href="#" id="fahrenheit-link">°F</a> | 
-                <a href="#" id="celsius-link">°C</a>
+          <div class="overview">
+              <h1 id="city"></h1>
+              <ul>
+                  <li>Last Updated:<span id="date"></span></li>
+                  <li id="description"></li>
+              </ul>
+            </div>
+            <div class="row">
+                <div class ="col-6">
+                    <div class="clearfix weather-temperature">
+                    <img src="" 
+                     alt="Clear" 
+                     id="icon" 
+                     class="float-left" />   
+                      <strong id="temperature"></strong>
+                <span class="units">
+                <a href="#" id="fahrenheit-link" class="active">°F</a> | 
+                  <a href="#" id="celsius-link">°C</a></span>
               </div> 
             </div>
           </div>
+            <div class="col-6">
+                <ul>
+                    <li>Wind: <span id="wind"></span> km/h</li>
+                    <li>Humidity: <span id="humidity"></span>%</li>
+                </ul>
+            </div>
+          </div>
+        </div>
          
             <a href="https://github.com/KelseyWalton/Weather-app">Git Hub</a>
       <script src="src/index.js"></script>
