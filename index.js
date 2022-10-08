@@ -1,5 +1,4 @@
 function formatDate(date) {
-  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -8,7 +7,8 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  
+
+  let dayIndex = date.getDay();
   let days = [
     "Sunday",
     "Monday",
@@ -18,9 +18,11 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[daate.detDay()];
+  let day = days[dayIndex];
+
   return `${day} ${hours}:${minutes}`;
 }
+
 
 function search(event) {
   event.preventDefault();
@@ -34,8 +36,6 @@ let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
-let searchForm = document.querySelector("form");
-searchForm.addEventListener("submit", search);
 
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
