@@ -23,7 +23,6 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-
 function search(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city");
@@ -36,41 +35,34 @@ let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
-
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
-  let descriptionElement = document.querySelector("#description")
+  //let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
-  let iconElement = document.querySelector("#icon");
-  
-  celciusTemperature = response.data.main.temp;
-  
-  temperatureElement.innerHTML = math.round(celciusTemperature);
+  //let iconElement = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
-  descriptionElement.innerHTML = response.data.weather[0].description;
+  //descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = formatDate(response.data.dt *1000);
-  iconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-                           );
-}
-  iconElement.setAttribute("alt", response.data.weather[0].description);
-
-  let apiKey = "897d9f57f1d7721ebf11f10b089e7315";
-  let city = "Nashville";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(displayTemperature);
-
+  dateElement.innerHTML = formatDate(new Date(response.data.dt * 1000));
+  // iconElement.setAttribute(
+  //   "src",
+  //   `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  // );
+  // iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function search(city) {
   let apiKey = "897d9f57f1d7721ebf11f10b089e7315";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemperature);
+  axios.get(apiUrl).then(displayTemperature);
 }
 
 function handleSubmit(event) {
@@ -80,21 +72,17 @@ function handleSubmit(event) {
 }
 
 function displayFahrenheitTemperature(event) {
-event.preventDefault();
+  event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemperature = (celciusTemperature * 9) /5 + 32;
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-
-
-let form = document.querySelector("#search-form");
-form.addEventlistener("submit", handleSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 function displayCelciusTemperature(event) {
-event.preventDefault();
+  event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celciusTemperature);
 }
@@ -102,10 +90,10 @@ event.preventDefault();
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
-form.addEventlistener("submit", handleSubmit);
+form.addEventListener("submit", handleSubmit);
 
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
 
-
 search("Nashville");
+
