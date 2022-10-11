@@ -23,6 +23,11 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast(){
+  let forecastElement = document.querySelector("forecast");
+  
+  forecastElement.innerHTML = ``;
+}
 function search(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city");
